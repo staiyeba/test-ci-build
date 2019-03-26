@@ -1,16 +1,16 @@
 os: osx
 language: cpp
 
-install:
-  - brew install conan
-
 jobs:
   include:
-    - stage: install configs
-    - script: conan config install https://github.com/includeos/conan_config.git
+    - stage: Install Conan
+    - install: brew install conan
 
-    - stage: build
-    - script: conan create binutils/2.31 binutils/2.31@includeos/toolchain -pr apple-clang-10-macos-toolchain
+    - stage: Configure Conan
+      script: conan config install https://github.com/includeos/conan_config.git
 
-    - stage: upload
-    - script: echo "UPLOADING ...."
+    - stage: Build Toolchain
+      script: conan create binutils/2.31 binutils/2.31@includeos/toolchain -pr apple-clang-10-macos-toolchain
+
+    - stage: Upload to Remote
+      script: echo "UPLOADING ...."
