@@ -4,19 +4,18 @@ language: cpp
 compiler:
     - clang
 
-jobs:
-  include:
-    - stage: Install Conan
-      script: ./install.sh
 
-    - stage: Configure Conan
-      script: conan config install https://github.com/includeos/conan_config.git
+stage: Install Conan
+  - script: ./install.sh
 
-    - stage: Build Toolchain
-      script: conan create binutils/2.31 binutils/2.31@includeos/toolchain -pr apple-clang-10-macos-toolchain
+stage: Configure Conan
+  - script: conan config install https://github.com/includeos/conan_config.git
 
-    - stage: Upload to Remote
-      script: echo "UPLOADING ...."
+stage: Build Toolchain
+  - script: conan create binutils/2.31 binutils/2.31@includeos/toolchain -pr apple-clang-10-macos-toolchain
+
+stage: Upload to Remote
+  - script: echo "UPLOADING ...."
 
 notifications:
   slack: includeos:qyy8ZShmREcJsl6vD0Ae0Qsa
