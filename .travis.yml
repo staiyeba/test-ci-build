@@ -4,7 +4,7 @@ language: cpp
 jobs:
   include:
     - stage: Install Conan
-    - install: brew install conan
+      install: brew install conan
 
     - stage: Configure Conan
       script: conan config install https://github.com/includeos/conan_config.git
