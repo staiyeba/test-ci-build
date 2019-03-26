@@ -1,0 +1,13 @@
+os: osx
+language: python
+python: 3.7
+
+compiler:
+  - gcc
+  - clang
+
+install:
+  - conan
+
+script:
+  - conan create binutils/2.31 binutils/2.31@includeos/stable -pr apple-clang-10-macos-toolchain includeos/stable
