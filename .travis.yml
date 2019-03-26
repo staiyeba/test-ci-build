@@ -4,9 +4,10 @@ language: cpp
 compiler:
   - clang
 
+# in
 install:
   - brew install conan
 
 script:
   - conan config install https://github.com/includeos/conan_config.git
-  - conan create binutils/2.31 binutils/2.31@includeos/stable -pr apple-clang-10-macos-toolchain includeos/stable
+  - conan create binutils/2.31 binutils/2.31@includeos/toolchain -pr apple-clang-10-macos-toolchain
