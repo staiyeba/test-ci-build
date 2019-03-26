@@ -5,9 +5,7 @@ compiler:
     - clang
 
 
-install: "Installing Conan"
-script: ./install.sh
-
+install: ./install.sh
 
 script:
   - conan config install https://github.com/includeos/conan_config.git
