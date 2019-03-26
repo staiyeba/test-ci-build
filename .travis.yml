@@ -1,13 +1,16 @@
 os: osx
 language: cpp
 
-compiler:
-  - clang
-
-# in
 install:
   - brew install conan
 
-script:
-  - conan config install https://github.com/includeos/conan_config.git
-  - conan create binutils/2.31 binutils/2.31@includeos/toolchain -pr apple-clang-10-macos-toolchain
+jobs:
+  include:
+    - stage: install configs
+    - script: conan config install https://github.com/includeos/conan_config.git
+
+    - stage: build
+    - script: conan create binutils/2.31 binutils/2.31@includeos/toolchain -pr apple-clang-10-macos-toolchain
+
+    - stage: upload
+    - script: echo "UPLOADING ...."
