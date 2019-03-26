@@ -8,14 +8,11 @@ compiler:
 install: "Installing Conan"
 script: ./install.sh
 
-install: true
-script: conan config install https://github.com/includeos/conan_config.git
 
-install: true
-script: conan create binutils/2.31 binutils/2.31@includeos/toolchain -pr apple-clang-10-macos-toolchain
-
-install: "Uploading"
-script: echo "UPLOADING ...."
+script:
+  - conan config install https://github.com/includeos/conan_config.git
+  - conan create binutils/2.31 binutils/2.31@includeos/toolchain -pr apple-clang-10-macos-toolchain
+  - echo "UPLOADING ...."
 
 notifications:
   slack: includeos:qyy8ZShmREcJsl6vD0Ae0Qsa
