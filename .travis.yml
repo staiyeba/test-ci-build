@@ -1,6 +1,9 @@
 os: osx
 language: cpp
 
+compiler:
+    - clang
+    
 jobs:
   include:
     - stage: Install Conan
@@ -14,3 +17,6 @@ jobs:
 
     - stage: Upload to Remote
       script: echo "UPLOADING ...."
+
+notifications:
+  slack: includeos:qyy8ZShmREcJsl6vD0Ae0Qsa
