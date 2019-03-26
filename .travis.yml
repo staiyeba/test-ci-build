@@ -5,17 +5,13 @@ compiler:
     - clang
 
 
-stage: Install Conan
-  - script: ./install.sh
+install: ./install.sh
 
-stage: Configure Conan
-  - script: conan config install https://github.com/includeos/conan_config.git
+script: conan config install https://github.com/includeos/conan_config.git
 
-stage: Build Toolchain
-  - script: conan create binutils/2.31 binutils/2.31@includeos/toolchain -pr apple-clang-10-macos-toolchain
+script: conan create binutils/2.31 binutils/2.31@includeos/toolchain -pr apple-clang-10-macos-toolchain
 
-stage: Upload to Remote
-  - script: echo "UPLOADING ...."
+script: echo "UPLOADING ...."
 
 notifications:
   slack: includeos:qyy8ZShmREcJsl6vD0Ae0Qsa
