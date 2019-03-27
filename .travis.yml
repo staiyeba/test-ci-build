@@ -11,7 +11,7 @@ script:
   - conan config install https://github.com/includeos/conan_config.git
   - conan create binutils/2.31 binutils/2.31@includeos/mactest -pr apple-clang-10-macos-toolchain
   - conan search binutils/2.31@includeos/mactest
-  - conan upload --all binutils/2.31@includeos/mactest -r includeos-test
+#  - conan upload --all binutils/2.31@includeos/mactest -r includeos-test
 
 notifications:
-  slack: includeos:qyy8ZShmREcJsl6vD0Ae0Qsa
+  slack: includeos:$SLACK_TOKEN
