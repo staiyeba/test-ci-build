@@ -4,14 +4,15 @@ language: cpp
 compiler:
     - clang
 
-
-install: ./install.sh
+install:
+  - .ci/install.sh
 
 script:
   - conan config install https://github.com/includeos/conan_config.git
-  - conan create binutils/2.31 binutils/2.31@includeos/toolchain -pr apple-clang-10-macos-toolchain
-  - conan search binutils/2.31@includeos/toolchain
+  - conan create binutils/2.31 binutils/2.31@includeos/mactest -pr apple-clang-10-macos-toolchain
+  - conan search binutils/2.31@includeos/mactest
   - echo "UPLOADING ...."
+  - conan upload --all binutils@includeos/mactest -r includeos-test
 
 notifications:
   slack: includeos:qyy8ZShmREcJsl6vD0Ae0Qsa
