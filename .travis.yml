@@ -10,7 +10,7 @@ install: ./install.sh
 script:
   - conan config install https://github.com/includeos/conan_config.git
   - conan create binutils/2.31 binutils/2.31@includeos/toolchain -pr apple-clang-10-macos-toolchain
-  - conan search binutils/2.31@includeos/stable -r includeos
+  - conan search binutils/2.31@includeos/toolchain -r includeos
   - echo "UPLOADING ...."
 
 notifications:
