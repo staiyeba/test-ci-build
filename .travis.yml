@@ -19,3 +19,7 @@ script:
       conan copy --all binutils/2.31@includeos/maclatest includeos/macstable
       conan upload --all binutils/2.31@includeos/macstable -r includeos-test
     fi
+
+notifications:
+  slack:
+    on_success: always
