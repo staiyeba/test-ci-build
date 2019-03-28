@@ -21,5 +21,4 @@ script:
     fi
 
 notifications:
-  slack:
-    on_success: always
+  slack: includeos:$SLACK_TOKEN
