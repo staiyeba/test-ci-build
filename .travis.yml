@@ -4,11 +4,6 @@ language: cpp
 compiler:
     - clang
 
-branches:
-  only:
-    - dependencies/c/*
-    - *.yml
-
 install:
   - .ci/install.sh
 
@@ -23,3 +18,8 @@ script:
       echo "this is a tag"
       echo $TRAVIS_TAG
     fi
+
+branches:
+  only:
+    - /dependencies/c/
+    - *.yml
