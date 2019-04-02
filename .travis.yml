@@ -8,20 +8,10 @@ install:
   - .ci/install.sh
 
 script:
-  - conan config install https://github.com/includeos/conan_config.git
-  - conan create binutils/2.31 binutils/2.31@includeos/maclatest -pr apple-clang-10-macos-toolchain
-  - conan search binutils/2.31@includeos/maclatest
   - |
-    if [ "$TRAVIS_BRANCH" == "master" ]; then
-      conan upload --all binutils/2.31@includeos/maclatest -r includeos-test
+    if [ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_PULL_REQUEST" == "false" ]; then
+      echo "this is a merge"
     fi
     if [ -n "$TRAVIS_TAG" ]; then
-      conan copy --all binutils/2.31@includeos/maclatest includeos/macstable
-      conan upload --all binutils/2.31@includeos/macstable -r includeos-test
+      echo "this is a tag"
     fi
-
-notifications:
-  slack:
-    rooms:
-      - secure: "WnnNdVzHTWUTYEcWk1Sq/O14iYIMbRq4TobP3hBMipbxt1+2m0dZwfQyVC2KqgCZk6S8+2cZQu83q73aiZtgsTdLPpI3VFgO+BCsl272z/P3BIXjJlRSgtoVteNrxOyrG6JGq1WTiGRpMj36gdpv/JtnGksQL6v5Mmbcipb2+G27ZoE33Z4DuUVO1hpfJwUj5cCKTL427TVtzY2jc8UQCtiQq3GyRq1rANuNe1z68Ds87qlunORGA79b2wOHZEi4zLXx+mVlgxCbAqmlQRafVw16lffc68XTEQNJBjfPE0FdZw2ZDbOJ9rsuHkt1jZsAEpH1EtB7IwEmjM2Nd/kZH6XvOS1lQ0S/Fh/Ib5KGqFXGBwQsGTdZtNuLoq1NwHeoS5sfXlsQHvQgLYYOr35jqs+KgKUzm4xLnl2txBE1IpTkA+49m+UcK/kixuxolZZHBBYwgX7JU6gQtMA3bmHyJDlTO91+zugzBdhLwXRwatwF329eT3hIcWySxkrQIY/UGu64TEb0CCQ35tqCkjY7o54jG/fFf9PvL4QjHffwdnIBEMdzg8UFoNmOY7eS3mmMCBz8OFpT4LJ3FLv9UOZJ8Oz35M6OOxJMBVI3hrkPWoniZEchb4TZFiVUkwRYdBITluXSBP8V5OvJIXtAG0Bt10Y3/dma6q1HPo933sKcqmU="
-    on_success: always
