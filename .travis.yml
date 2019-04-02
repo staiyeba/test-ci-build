@@ -18,5 +18,3 @@ script:
       echo "this is a tag"
       echo $TRAVIS_TAG
     fi
-
-ignore: *.md
