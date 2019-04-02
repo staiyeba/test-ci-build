@@ -19,6 +19,4 @@ script:
       echo $TRAVIS_TAG
     fi
 
-branches:
-  only:
-    - *.md
+ignore: *.md
