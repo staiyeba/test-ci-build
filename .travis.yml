@@ -19,10 +19,7 @@ script:
       echo $TRAVIS_TAG
     fi
 
-ignore:
-  - *.md
-  - dependencies/a/*
-  - dependencies/b/*
+branches:
+  only:
+  - dependencies/c/*
   - *.yml
-  - Jenkinsfile
-  - .*
