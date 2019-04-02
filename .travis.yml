@@ -5,8 +5,9 @@ compiler:
     - clang
 
 before_install:
-  - CHANGED_FILES=($(git diff --name-only $TRAVIS_COMMIT_RANGE))
-  - echo $CHANGED_FILES
+  - |
+    CHANGED_FILES=($(git diff --name-only $TRAVIS_COMMIT_RANGE))
+    echo $CHANGED_FILES
 
 install:
   - .ci/install.sh
