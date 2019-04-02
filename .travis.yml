@@ -9,7 +9,8 @@ before_install:
     CHANGED_FILES=($(git diff --name-only $TRAVIS_COMMIT_RANGE))
     echo $CHANGED_FILES
     if [[$CHANGED_FILES != *binutils*]]; then
-      exit
+      echo "skip conan build for other packages"
+      TRAVIS_TEST_RESULT=1
     fi
 
 
