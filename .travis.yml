@@ -18,6 +18,6 @@ script:
       echo "this is a merge"
     fi
     if [ -n "$TRAVIS_TAG" ]; then
-      echo "this is a tag
+      echo "this is a tag"
       echo $TRAVIS_TAG
     fi
