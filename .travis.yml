@@ -6,9 +6,9 @@ compiler:
 
 before_install:
   - |
-    if ! git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '(*binutils*)'
+    if ! git diff --name-only $TRAVIS_COMMIT_RANGE | grep -vE '*binutils*'
     then
-      echo "skip conan build for other packages"
+      echo "SKIP conan build for other packages"
       travis_terminate 0
     fi
 
