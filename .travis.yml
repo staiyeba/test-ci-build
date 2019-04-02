@@ -6,7 +6,7 @@ compiler:
 
 before_install:
   - CHANGED_FILES=($(git diff --name-only $TRAVIS_COMMIT_RANGE))
-  - echo "$CHANGED_FILES"
+  - echo $CHANGED_FILES
 
 install:
   - .ci/install.sh
@@ -17,5 +17,6 @@ script:
       echo "this is a merge"
     fi
     if [ -n "$TRAVIS_TAG" ]; then
-      echo "this is a tag"
+      echo "this is a tag
+      echo $TRAVIS_TAG
     fi
