@@ -1,4 +1,4 @@
-i#!/bin/sh
+#!/bin/bash
 
 mkdir travis-cache
 if [ ! -f homebrew-cache.tar.gz ]; then
