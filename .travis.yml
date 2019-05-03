@@ -21,7 +21,6 @@ script:
   - |
     if [[ "$TRAVIS_BRANCH" == "master" && "$TRAVIS_PULL_REQUEST" == "false" ]]; then
       echo "this is a merge"
-      sh ./dependencies/gnu/binutils/ca.sh
     fi
     if [ -n "$TRAVIS_TAG" ]; then
       echo "this is a tag"
